@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import useFetch from '../hooks/useFetch'
 
 const API_KEY = "84e25ac11ad6125024e1d376337be05f"
 
@@ -8,26 +9,11 @@ const URL_PELICULAS_ULTIMAS = "https://api.themoviedb.org/3/movie/upcoming?api_k
 
 
 const Home = () => {
+  const peliculasPopulares = useFetch(URL_PELICULAS_POPULARES)
+  const peliculasPuntuadas = useFetch(URL_PELICULAS_PUNTUADAS)
+  const ultimosLanzamientos = useFetch(URL_PELICULAS_ULTIMAS)
 
-  const [peliculasPopulares, setPeliculasPopulares] = useState([])
-  const [peliculasMejorPuntuadas, setPeliculasMejorPuntuadas] = useState([])
-  const [ultimosLanzamientos, setUltimosLanzamientos] = useState([])
-
-  useEffect(() => {
-    fetch(URL_PELICULAS_POPULARES)
-    .then(res => res.json())
-    .then(data => setPeliculasPopulares(data.results))
-
-    fetch(URL_PELICULAS_ULTIMAS)
-    .then(res => res.json())
-    .then(data => setUltimosLanzamientos(data.results))
-
-    fetch(URL_PELICULAS_PUNTUADAS)
-    .then(res => res.json())
-    .then(data => setPeliculasMejorPuntuadas(data.results))
-  }, [])
-
-  console.log(peliculasPopulares, peliculasMejorPuntuadas, ultimosLanzamientos)
+  console.log(peliculasPopulares, peliculasPuntuadas, ultimosLanzamientos)
 
   return(
     <h1>Soy HOME</h1>

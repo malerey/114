@@ -5,12 +5,11 @@ import useFetch from '../hooks/useFetch';
 const PeliculasPopulares = () => {
   const peliculasPopulares = useFetch(URL_PELICULAS_POPULARES)
   const titulo = "peliculas populares"
-  
+
   return(
     <PeliculasSection 
       peliculas={peliculasPopulares} 
       titulo={convertirAMayusculas(titulo)}
-        
       />
   )
 }

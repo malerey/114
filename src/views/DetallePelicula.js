@@ -10,6 +10,8 @@ const [detalle, setDetalle] = useState({})
     .then(res => res.json())
     .then(data => setDetalle(data))
   }, [])
+
+  console.log(detalle)
   
   return(
     <h1>Hola, soy el detalle de una pelicula</h1>
